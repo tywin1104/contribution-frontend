@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-
 import gql from 'graphql-tag';
-
 
 @Component({
   selector: 'app-list',
@@ -12,8 +10,7 @@ import gql from 'graphql-tag';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  // results: Observable<any>;
-  results;
+  results: Observable<any>;
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
@@ -33,7 +30,7 @@ export class ListComponent implements OnInit {
                   totalCount
                 }
                 languages(first:3) {
-                  edges { 
+                  edges {
                     node {
                       name
                     }
