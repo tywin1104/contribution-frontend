@@ -6,11 +6,16 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { ApolloLink, concat } from 'apollo-link';
 import { HttpHeaders } from '@angular/common/http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { LandingPageComponent } from './landing-page/landing-page.component'
 
+const appRoutes: Routes = [
+  { path: 'open-source-projects', component: ListComponent },
+  { path: '', component: LandingPageComponent}
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component'
     BrowserModule,
     HttpClientModule,
     ApolloModule,
-    HttpLinkModule
+    HttpLinkModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

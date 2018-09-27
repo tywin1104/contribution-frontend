@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './landing-page.component.html',
   styleUrls: [
     '../../assets/css/animate.min.css',
-    '../../assets/css/bootstrap.min.css',
     '../../assets/css/etline-font.css',
     '../../assets/css/flexslider.css',
     '../../assets/css/ie.css',
