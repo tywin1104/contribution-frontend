@@ -37,7 +37,7 @@ export class AppModule {
     const authMiddleware = new ApolloLink((operation, forward) => {
       // add the authorization to the headers
       operation.setContext({
-        headers: new HttpHeaders().set('Authorization', "XXX")
+        headers: new HttpHeaders().set('Authorization', "XXX·")
       });
 
       return forward(operation);
