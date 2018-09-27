@@ -12,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
     '../../assets/css/normalize.min.css',
     '../../assets/css/print.css',
     './landing-page.component.css',
-    '../../assets/css/styles.css'
+    '../../assets/css/styles.css',
+    '../../assets/css/queries.css',
+    '../../assets/css/jquery.fancybox.css'
   ]
 })
 export class LandingPageComponent implements OnInit {
