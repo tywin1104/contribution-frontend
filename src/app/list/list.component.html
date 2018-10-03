@@ -1,8 +1,25 @@
 <div class="container">
-  <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Apollo Client For Angular - Sample Application</a>
-  </nav>
-  <div *ngFor="let result of results | async">
-    {{ result.node.name}}
+  <div class="row">
+    <div *ngFor="let result of results | async"  class="col s12 m6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{{ result.node.name}}
+                <span class="new badge red"
+                      data-badge-caption="Issues">
+                        {{ result.node.issues.totalCount}}
+                </span>
+             </span>
+              <p>{{ result.node.description}}</p>
+            </div>
+            <div class="card-action">
+              <a [href]="result.node.url">Check it out!</a>
+              <a *ngFor="let lang of result.node.languages.edges"
+                 class="waves-effect waves-light btn-small">{{ lang.node.name }}
+              </a>
+            </div>
+          </div>
     </div>
+  </div>
+  <!-- {{ result.node.name}} -->
 </div>
+

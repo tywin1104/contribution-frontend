@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { LandingPageComponent } from './landing-page/landing-page.component'
 
+import {MatCardModule} from '@angular/material/card';
+
 const appRoutes: Routes = [
   { path: 'open-source-projects', component: ListComponent },
   { path: '', component: LandingPageComponent}
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     HttpLinkModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -45,9 +48,8 @@ export class AppModule {
     const authMiddleware = new ApolloLink((operation, forward) => {
       // add the authorization to the headers
       operation.setContext({
-        headers: new HttpHeaders().set('Authorization', "XXX·")
+        headers: new HttpHeaders().set('Authorization', "Bearer 7b1bf6308e6aad99f3ef1f59accd2dc69aa2273d")
       });
-
       return forward(operation);
     });
 
