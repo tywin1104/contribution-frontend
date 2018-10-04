@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
     this.results= this.apollo.watchQuery<any>({
       query: gql`
       {
-        search(query:"good-first-issues:>10  stars:>20 pushed:>2018-09-01  is:public archived:false", type: REPOSITORY, first: 20) {
+        search(query:"good-first-issues:>10  stars:>20 pushed:>2018-09-01  is:public archived:false", type: REPOSITORY, first: 60) {
           repositoryCount
           edges {
             node {
