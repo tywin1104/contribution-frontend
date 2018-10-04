@@ -13,8 +13,12 @@ import { ListComponent } from './list/list.component';
 import { LandingPageComponent } from './landing-page/landing-page.component'
 
 import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import {environment} from '../environments/environment'
+
 
 const appRoutes: Routes = [
   { path: 'open-source-projects', component: ListComponent },
@@ -35,7 +39,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
