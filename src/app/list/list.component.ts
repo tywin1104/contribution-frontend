@@ -3,13 +3,11 @@ import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
-import { MydataserviceService } from '../mydataservice.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
-  providers: [MydataserviceService] 
+  styleUrls: ['./list.component.css']
 })
 
 export class ListComponent implements OnInit {
@@ -43,7 +41,7 @@ export class ListComponent implements OnInit {
    }
  }
   `
-  constructor(private apollo: Apollo, private service: MydataserviceService) { }
+  constructor(private apollo: Apollo) { }
 
   // When we got data on a success
   onSuccess(res) {
@@ -82,8 +80,4 @@ export class ListComponent implements OnInit {
         this.onSuccess(result);
       })
   }
-
-  // onScroll() {
-  //   console.log('scrolled!!');
-  // }
 }

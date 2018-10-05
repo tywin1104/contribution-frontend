@@ -1,9 +1,9 @@
 .container {
-    width: 60%;
+    width: 80%;
     background-color: black;
 }
-.search-results {
-    height:1000px;
-    background-color: antiquewhite;
+
+.repo-container {
+    height: 100%;
     overflow-y: scroll;
 }
