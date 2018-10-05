@@ -14,10 +14,11 @@ import { Photos, PhotosObj } from '../../_modal';
 })
 
 export class ListComponent implements OnInit {
-  current_cursor :String;
+  current_cursor = "Y3Vyc29yOjE=";
+  results;
   repo_query = gql`
-  query SearchRepos($queryString: String!, $cursor_val: String) {
-    search(query: $queryString, type: REPOSITORY, after: $cursor_val,first: 10) {
+  query SearchRepos($queryString: String! , $cursor_val: String) {
+    search(query: $queryString, type: REPOSITORY, after: $cursor_val, first: 10) {
      repositoryCount
      edges {
        cursor
@@ -43,7 +44,7 @@ export class ListComponent implements OnInit {
    }
  }
   `
-  results: Observable<any>;
+  all_repos;
   // myPhotosList: Photos[] = [];  
   // page: number = 1;
   constructor(private apollo: Apollo, private service: MydataserviceService) { }
@@ -76,18 +77,39 @@ export class ListComponent implements OnInit {
   // }    
 
   ngOnInit() {
-    this.results= this.apollo.watchQuery<any>({
+
+    this.results = this.apollo.watchQuery<any>({
       query: this.repo_query,
       variables: {
         queryString: "good-first-issues:>10  stars:>20 pushed:>2018-09-01  is:public archived:false",
-        cursor_val: null
+        cursor_val: this.current_cursor
       }
     })
       .valueChanges
       .pipe(
         map(result => result.data.search.edges)
-      );
+      )
   }
+  
+  // append_results() {
+  //   let response = this.get_repos()
+  //   this.current_cursor = response.cursor;
+  //   this.all_repos = response;
+  // }
+
+  // get_repos() {
+  //   return this.apollo.watchQuery<any>({
+  //     query: this.repo_query,
+  //     variables: {
+  //       queryString: "good-first-issues:>10  stars:>20 pushed:>2018-09-01  is:public archived:false",
+  //       cursor_val: this.current_cursor
+  //     }
+  //   })
+  //     .valueChanges
+  //     .pipe(
+  //       map(result => result.data.search.edges)
+  //     )
+  // }
 
   // onScroll() {
   //   console.log('scrolled!!');
