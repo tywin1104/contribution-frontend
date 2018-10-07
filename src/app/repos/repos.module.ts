@@ -28,8 +28,8 @@ import { RepoListComponent } from './list/repo-list/repo-list.component';
   ],
   declarations: [ListComponent, RepoListComponent],
   exports: [
-    // ListComponent,
-    // RepoListComponent
+    ListComponent,
+    RepoListComponent
   ]
 })
 export class ReposModule {
