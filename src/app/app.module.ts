@@ -19,7 +19,8 @@ import {MatChipsModule} from '@angular/material/chips';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import {environment} from '../environments/environment'
+import {environment} from '../environments/environment';
+import { RepoListComponent } from './list/repo-list/repo-list.component'
 
 
 const appRoutes: Routes = [
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ListComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    RepoListComponent
   ],
   imports: [
     BrowserModule,

@@ -4,13 +4,11 @@ import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-repo-list',
+  templateUrl: './repo-list.component.html',
+  styleUrls: ['./repo-list.component.css']
 })
-
-
-export class ListComponent implements OnInit {
+export class RepoListComponent implements OnInit {
   current_cursor = null;
   results = [];
   repo_query = gql`
@@ -104,3 +102,4 @@ export class ListComponent implements OnInit {
     }
   }
 }
+

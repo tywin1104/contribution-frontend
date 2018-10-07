@@ -1,31 +1,22 @@
-<div class="container">
-    <div class="row  flex repo-container" infiniteScroll
-    [infiniteScrollDistance]="1.5"
-    [infiniteScrollThrottle]="50"
-    [infiniteScrollDisabled]="false"
-    (scrolled)="onScroll()">
-  <div *ngFor="let result of results"  class="col s12 m4">
-    <div class="card blue-grey darken-1">
-      <a [href]="result.node.url" target="_blank" >
-        <div class="card-content white-text">
-          <span class="card-title">{{ result.node.name}}
-            <span class="chip">
-                <i class="material-icons">{{getIssueIcon(result.node.issues.totalCount)}}</i>
-                {{result.node.issues.totalCount}} Issues
-            </span>
-         </span>
-          <div class="repo-description">{{ result.node.description}} </div>
-        </div>
-        <div class="card-action">
-          <span *ngFor="let lang of result.node.languages.edges"
-                class="repo-lang">
-              {{ lang.node.name }} /
-          </span>
-        </div>
-      </a>
+<nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="#!" class="breadcrumb">HOME</a>
+        <a href="#!" class="breadcrumb">Find-repos</a>
       </div>
-  </div>
-  </div>
+    </div>
+  </nav>
+<div class="coverPage container text-center">
+
+  <h1>
+    Start your contribution today by finding the suitable open-source project
+    to work on & improve yourself
+  </h1>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHC7DUT95PTaPvL77QyNkBaTgDGVlIzcgfYNYWFP9M7Tk0hz5I">
+  <h3>Pick your favorite from carefully selected github repositories that are beginner-friendly and with high interactivity
+  </h3>
+
 </div>
+<app-repo-list></app-repo-list>
 
 
