@@ -1,27 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from './landing-page/landing-page.component'
 import { ReposModule } from './repos/repos.module'
 
+import { AppRoutingModule } from './app-routing.module';
+import { LandingPageComponent } from './landing-page/landing-page.component'
 
-// const appRoutes: Routes = [
-//   { path: 'open-source-projects', component: ListComponent },
-//   { path: '', component: LandingPageComponent}
-// ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
-    ReposModule
-    // RouterModule.forRoot(
-    //   appRoutes
-    // )
+    ReposModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

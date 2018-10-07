@@ -8,14 +8,10 @@ import { onError } from 'apollo-link-error';
 import { ApolloLink, concat, from } from 'apollo-link';
 import { HttpHeaders } from '@angular/common/http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatChipsModule} from '@angular/material/chips';
-
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import {environment} from '../../environments/environment';
-
+import { environment } from '../../environments/environment';
+import { routing } from './repos-routing'
 
 import { ListComponent } from './list/list.component';
 import { RepoListComponent } from './list/repo-list/repo-list.component';
@@ -27,15 +23,13 @@ import { RepoListComponent } from './list/repo-list/repo-list.component';
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatChipsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    routing
   ],
   declarations: [ListComponent, RepoListComponent],
   exports: [
-    ListComponent,
-    RepoListComponent
+    // ListComponent,
+    // RepoListComponent
   ]
 })
 export class ReposModule {
