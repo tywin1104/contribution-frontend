@@ -15,6 +15,9 @@ import { routing } from './repos-routing'
 
 import { ListComponent } from './list/list.component';
 import { RepoListComponent } from './list/repo-list/repo-list.component';
+import { CallbackComponent } from './callback/callback.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -26,7 +29,7 @@ import { RepoListComponent } from './list/repo-list/repo-list.component';
     InfiniteScrollModule,
     routing
   ],
-  declarations: [ListComponent, RepoListComponent],
+  declarations: [ListComponent, RepoListComponent, CallbackComponent, HomeComponent, ProfileComponent],
   exports: [
     ListComponent,
     RepoListComponent
