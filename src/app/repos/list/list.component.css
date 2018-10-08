@@ -1,14 +1,17 @@
+
 nav {
-    background-color:grey;
+    background-color: rgb(29, 39,59);
 }
 nav a{
-    background-color: gray;
+    background-color:  rgb(29, 39,59);
 }
 .container {
     width: 60%;
 }
 .coverPage {
+    font-family: 'Raleway', sans-serif;
     height: 100vh;
+    color: aliceblue;
 }
 
 .coverPage h1 {

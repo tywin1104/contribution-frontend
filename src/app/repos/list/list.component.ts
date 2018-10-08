@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    document.body.style.backgroundColor="rgb(27,39,59)";
+  }
 
   ngOnInit() {
   }
