@@ -20,6 +20,7 @@ import { AuthService } from './auth.service';
 export class LandingPageComponent implements OnInit {
 
   constructor(public auth: AuthService) {
+    // auth.handleAuthentication();
   }
 
   ngOnInit() {

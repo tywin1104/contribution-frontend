@@ -12,12 +12,16 @@
                           <li><a href="#download">Download</a></li>
                       </ul>
                       <ul class="member-actions">
-                          <li><a
+                          <li>{{ auth.isAuthenticated()}}</li>
+                          <li><a *ngIf="!auth.isAuthenticated()"
                                 class="login"
-                                (click)="auth.login()">Log in
+                                (click)="auth.login()">Log In
                               </a>
                           </li>
-                          <li><a href="#download" class="btn-white btn-small">Sign up</a></li>
+                          <li><a
+                            *ngIf="auth.isAuthenticated()"
+                            (click)="auth.logout()"
+                            class="btn-white btn-small">Log Out</a></li>
                       </ul>
                   </nav>
               </div>
