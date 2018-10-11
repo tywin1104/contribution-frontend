@@ -1,3 +1,4 @@
+<pre class="full-profile">{{ profile | json }}</pre>
 <section class="hero">
   <section class="navigation">
       <header>
@@ -5,23 +6,25 @@
               <div class="logo"><a href="#"><img src="../../assets/img/sedna-logo.png" alt="Sedna logo"></a></div>
               <div class="header-nav">
                   <nav>
-                      <ul class="primary-nav">
-                          <li><a href="#features">Features</a></li>
-                          <li><a href="#assets">Assets</a></li>
-                          <li><a href="#blog">Blog</a></li>
-                          <li><a href="#download">Download</a></li>
-                      </ul>
+                      <!-- <ul class="primary-nav"> -->
+                          <!-- <li><a href="#features">Features</a></li> -->
+                          <!-- <li><a href="#assets">Assets</a></li> -->
+                      <!-- </ul> -->
                       <ul class="member-actions">
-                          <li>{{ auth.isAuthenticated()}}</li>
                           <li><a *ngIf="!auth.isAuthenticated()"
                                 class="login"
                                 (click)="auth.login()">Log In
                               </a>
                           </li>
+                          <li *ngIf="auth.isAuthenticated()">
+                              <p id="profile-name">{{ profile?.nickname }}</p>
+                              <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+                          </li>
                           <li><a
                             *ngIf="auth.isAuthenticated()"
                             (click)="auth.logout()"
-                            class="btn-white btn-small">Log Out</a></li>
+                            class="btn-white btn-small">Log Out</a>
+                            </li>
                       </ul>
                   </nav>
               </div>

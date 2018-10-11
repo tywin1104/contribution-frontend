@@ -5,7 +5,6 @@ a {
 
 .container {
     width: 90%;
-    /* background-color: black; */
 }
 .flex {
     display: flex;

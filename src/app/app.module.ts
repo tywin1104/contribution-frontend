@@ -7,6 +7,14 @@ import { LandingPageComponent } from './landing-page/landing-page.component'
 import { CallbackComponent } from './callback/callback.component'
 
 import { AuthService } from './landing-page/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 
 @NgModule({
@@ -17,9 +25,13 @@ import { AuthService } from './landing-page/auth.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    NgZorroAntdModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

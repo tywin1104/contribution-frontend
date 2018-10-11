@@ -1,12 +1,25 @@
+<div style="background: rgb(190, 200, 200);padding: 26px 16px 16px;">
+  <button nz-button nzType="primary" nzGhost>Primary</button>
+  <button nz-button nzType="default" nzGhost>Default</button>
+  <button nz-button nzType="dashed" nzGhost>Dashed</button>
+  <button nz-button nzType="danger" nzGhost>Danger</button>
+</div>
 <nav>
-    <div class="nav-wrapper">
-      <div class="col s12">
-        <a href="#!" class="breadcrumb">HOME</a>
-        <a href="#!" class="breadcrumb">Find-repos</a>
-        <a class="waves-effect waves-light btn">Log in</a>
-      </div>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <a href="#!" class="breadcrumb">HOME</a>
+      <a href="#!" class="breadcrumb">Find-repos</a>
+      <a *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Log In</a>
+      <a *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Log Out</a>
+      <a *ngIf="auth.isAuthenticated()"> Welcome {{ profile?.nickname }}</a>
+
+      <!-- <li *ngIf="auth.isAuthenticated()">
+        <p id="profile-name">{{ profile?.nickname }}</p>
+        <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+      </li> -->
     </div>
-  </nav>
+  </div>
+</nav>
 <div class="coverPage container text-center">
 
   <h1>
@@ -14,9 +27,23 @@
     to work on
   </h1>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHC7DUT95PTaPvL77QyNkBaTgDGVlIzcgfYNYWFP9M7Tk0hz5I">
-  <h3>Pick your favorite from carefully selected github repositories that are beginner-friendly and with high interactivity
+  <h3>Pick your favorite from carefully selected github repositories that are beginner-friendly and with high
+    interactivity
   </h3>
 
 </div>
-<app-repo-list></app-repo-list>
 
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a>Test 1</a></li>
+        <li class="tab col s3"><a class="active">Test 2</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12">Test 1</div>
+    <div id="test2" class="col s12">Test 2</div>
+  </div>
+</div>
+
+<app-repo-list></app-repo-list>

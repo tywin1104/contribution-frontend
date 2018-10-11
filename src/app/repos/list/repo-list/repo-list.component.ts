@@ -46,15 +46,15 @@ export class RepoListComponent implements OnInit {
   }
 
   getIssueIcon(issueCount) {
-    if(issueCount > 2000) {
+    if (issueCount > 2000) {
       return "sentiment_very_dissatisfied"
-    }else if(issueCount > 1000) {
+    } else if (issueCount > 1000) {
       return "sentiment_dissatisfied"
-    }else if(issueCount> 500) {
+    } else if (issueCount > 500) {
       return "sentiment_neutral"
-    }else if(issueCount > 200) {
+    } else if (issueCount > 200) {
       return "sentiment_satisfied"
-    }else {
+    } else {
       return "sentiment_very_satisfied"
     }
   }
@@ -65,13 +65,12 @@ export class RepoListComponent implements OnInit {
       res.forEach(item => {
         this.results.push(item);
       });
-      this.current_cursor = this.results[this.results.length-1].cursor;
+      this.current_cursor = this.results[this.results.length - 1].cursor;
       console.log(`Current cursor is ${this.current_cursor}`);
     }
   }
   // When scroll down the screen
-  onScroll()
-  {
+  onScroll() {
     console.log("Scrolled");
     this.append_repos();
   }
@@ -83,7 +82,7 @@ export class RepoListComponent implements OnInit {
       });
       console.log("Found in Apollo cache!")
       console.log(cachedResponse)
-    } catch(e) {
+    } catch (e) {
       console.log("Could not get from cache. Make request..")
       this.apollo.watchQuery<any>({
         query: this.repo_query,
@@ -101,6 +100,4 @@ export class RepoListComponent implements OnInit {
         })
     }
   }
-
-
 }

@@ -15,10 +15,8 @@ import { routing } from './repos-routing'
 
 import { ListComponent } from './list/list.component';
 import { RepoListComponent } from './list/repo-list/repo-list.component';
-import { CallbackComponent } from './callback/callback.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   imports: [
@@ -27,9 +25,10 @@ import { ProfileComponent } from './profile/profile.component';
     ApolloModule,
     HttpLinkModule,
     InfiniteScrollModule,
-    routing
+    routing,
+    NgZorroAntdModule
   ],
-  declarations: [ListComponent, RepoListComponent, CallbackComponent, HomeComponent, ProfileComponent],
+  declarations: [ListComponent, RepoListComponent],
   exports: [
     ListComponent,
     RepoListComponent
@@ -51,14 +50,14 @@ export class ReposModule {
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
           ),
         );
-        if (networkError) console.log(`[Network error]: ${networkError}`);
-      });
+      if (networkError) console.log(`[Network error]: ${networkError}`);
+    });
 
     //Middleware to add auth github personal access token
     const authMiddleware = new ApolloLink((operation, forward) => {
       // add the authorization to the headers
       operation.setContext({
-        headers: new HttpHeaders().set('Authorization', environment.github_token )
+        headers: new HttpHeaders().set('Authorization', environment.github_token)
       });
       return forward(operation);
     });
