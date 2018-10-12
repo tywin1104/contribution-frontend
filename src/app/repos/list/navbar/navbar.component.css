@@ -1,0 +1,12 @@
+
+nav {
+    background-color: rgb(29, 39,59);
+}
+nav a{
+    background-color:  rgb(29, 39,59);
+}
+
+.user-info {
+    float: right;
+    padding-right: 15%;
+}

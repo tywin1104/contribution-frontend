@@ -17,6 +17,8 @@ import { ListComponent } from './list/list.component';
 import { RepoListComponent } from './list/repo-list/repo-list.component';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { CommunityReposComponent } from './list/community-repos/community-repos.component';
+import { NavbarComponent } from './list/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -28,7 +30,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     routing,
     NgZorroAntdModule
   ],
-  declarations: [ListComponent, RepoListComponent],
+  declarations: [ListComponent, RepoListComponent, CommunityReposComponent, NavbarComponent],
   exports: [
     ListComponent,
     RepoListComponent

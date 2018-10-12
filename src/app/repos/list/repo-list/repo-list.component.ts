@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
+import { NzModalService } from 'ng-zorro-antd';
+import { AuthService } from '../../../landing-page/auth.service'
 
 @Component({
   selector: 'app-repo-list',
@@ -39,7 +41,7 @@ export class RepoListComponent implements OnInit {
    }
  }
   `
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo, private modalService: NzModalService, public auth: AuthService) { }
 
   ngOnInit() {
     this.append_repos();
@@ -60,7 +62,7 @@ export class RepoListComponent implements OnInit {
   }
   // When we got data on a success
   onSuccess(res) {
-    console.log(res);
+    // console.log(res);
     if (res != undefined) {
       res.forEach(item => {
         this.results.push(item);
@@ -71,7 +73,7 @@ export class RepoListComponent implements OnInit {
   }
   // When scroll down the screen
   onScroll() {
-    console.log("Scrolled");
+    // console.log("Scrolled");
     this.append_repos();
   }
 
@@ -80,10 +82,10 @@ export class RepoListComponent implements OnInit {
       let cachedResponse = this.apollo.getClient().readQuery({
         query: this.repo_query
       });
-      console.log("Found in Apollo cache!")
-      console.log(cachedResponse)
+      // console.log("Found in Apollo cache!")
+      // console.log(cachedResponse)
     } catch (e) {
-      console.log("Could not get from cache. Make request..")
+      // console.log("Could not get from cache. Make request..")
       this.apollo.watchQuery<any>({
         query: this.repo_query,
         variables: {
@@ -99,5 +101,29 @@ export class RepoListComponent implements OnInit {
           this.onSuccess(result);
         })
     }
+  }
+  tryToAddFav() {
+    if (this.auth.isAuthenticated()) {
+      return this.success();
+    } else {
+      return this.error();
+    }
+  }
+
+  error(): void {
+    const modal = this.modalService.error({
+      nzTitle: 'Error',
+      nzContent: 'Please log in first'
+    });
+    window.setTimeout(() => modal.destroy(), 1000);
+  }
+
+  success(): void {
+    const modal = this.modalService.success({
+      nzTitle: 'Success',
+      nzContent: 'You have bookmarked this repository!'
+    });
+
+    window.setTimeout(() => modal.destroy(), 1000);
   }
 }

@@ -40,18 +40,10 @@ a {
     color: bisque;
 }
 
-/* .card-title {
-    font-weight: bold;
-} */
-
-/* .repo-description {
-    max-height: 50%;
+.addFavbutton {
+    float: right;
+    display: inline;
 }
-
-.repo-language-tag {
-    width: 20%;
-}  */
-
 /* Swing animation */
 @-webkit-keyframes swing
 {

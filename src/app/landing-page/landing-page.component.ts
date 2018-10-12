@@ -15,12 +15,12 @@ export class LandingPageComponent implements OnInit {
   profile: any;
 
   constructor(public auth: AuthService) {
-    console.log("HAHAH")
     // console.log(auth.isAuthenticated())
     // auth.handleAuthentication();
   }
 
   ngOnInit() {
+    console.log(this.auth.isAuthenticated())
     if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
     } else {
