@@ -17,7 +17,8 @@
         </nz-dropdown>
 
         <a *ngIf="auth.isAuthenticated()"> {{ profile?.nickname }}&nbsp;&nbsp;</a>
-        <a class="change-auth-status" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Log In</a>
+        <a class="change-auth-status" *ngIf="!auth.isAuthenticated()" (click)="auth.login('/open-source-projects')">Log
+          In</a>
       </div>
     </div>
   </div>
