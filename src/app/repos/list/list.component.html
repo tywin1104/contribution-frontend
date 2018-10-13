@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [favoriteRepos]="favoriteRepos" [profile]="profile"></app-navbar>
 <div class="container text-center">
   <div class="coverPage ">
     <h1>
@@ -14,5 +14,5 @@
   <app-community-repos></app-community-repos>
 </div>
 
-<app-repo-list></app-repo-list>
+<app-repo-list [profile]="profile" (favRepoAdded)="onFavRepoAdded($event)"></app-repo-list>
 <nz-back-top></nz-back-top>

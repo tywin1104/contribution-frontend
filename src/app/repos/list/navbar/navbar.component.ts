@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../landing-page/auth.service'
-import { UserService } from '../../../_services/user.service'
 
 @Component({
   selector: 'app-navbar',
@@ -8,44 +7,23 @@ import { UserService } from '../../../_services/user.service'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  @Input() profile;
+  @Input() favoriteRepos: string;
 
-
-  profile: any
   isVisible = false;
-  favoriteRepos: any
   currentUserName: string
 
-
-  constructor(public auth: AuthService, private userService: UserService) {
-    document.body.style.backgroundColor = "rgb(27,39,59)";
+  constructor(public auth: AuthService) {
+    document.body.style.backgroundColor = "rgb(27,39,59)"
   }
 
   ngOnInit() {
-    if (this.auth.isAuthenticated()) {
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-        this.userService.getFavRepos(this.profile.sub)
-          .subscribe(repos => {
-            this.favoriteRepos = repos.favorite_repos
-            console.log(this.favoriteRepos)
-          })
-      } else {
-        this.auth.getProfile((err, profile) => {
-          this.profile = profile;
-        });
-      }
+    if (this.profile) {
+      this.currentUserName = this.profile.sub
+      console.log(this.currentUserName)
     }
-    // if(this.auth.isAuthenticated()) {
-    //   this.profile = this.auth.returnProfile()
-    //   this.currentUserName = this.profile.sub
-    //   this.userService.getFavRepos(this.profile.sub)
-    //       .subscribe(repos => {
-    //         this.favoriteRepos = repos.favorite_repos
-    //         console.log(this.favoriteRepos)
-    //       })
-
-    // }
   }
+
   showModal(): void {
     this.isVisible = true;
   }

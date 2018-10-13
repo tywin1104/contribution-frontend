@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
@@ -14,9 +14,10 @@ import { Repo } from '../../../_modal/repo'
   styleUrls: ['./repo-list.component.css']
 })
 export class RepoListComponent implements OnInit {
+  @Input() profile;
+  @Output() favRepoAdded = new EventEmitter<Repo>();
   current_cursor = null;
   results = [];
-  profile: any;
   repo_query = gql`
   query SearchRepos($queryString: String! , $cursor_val: String) {
     search(query: $queryString, type: REPOSITORY, after: $cursor_val, first: 12) {
@@ -56,19 +57,6 @@ export class RepoListComponent implements OnInit {
     this.append_repos();
   }
 
-  getIssueIcon(issueCount) {
-    if (issueCount > 2000) {
-      return "sentiment_very_dissatisfied"
-    } else if (issueCount > 1000) {
-      return "sentiment_dissatisfied"
-    } else if (issueCount > 500) {
-      return "sentiment_neutral"
-    } else if (issueCount > 200) {
-      return "sentiment_satisfied"
-    } else {
-      return "sentiment_very_satisfied"
-    }
-  }
   // When we got data on a success
   onSuccess(res) {
     // console.log(res);
@@ -114,10 +102,10 @@ export class RepoListComponent implements OnInit {
   tryToAddFav(repo_id, name, url) {
     if (this.auth.isAuthenticated()) {
       this.success();
-      this.profile = this.auth.returnProfile()
-      this.userService.addFavRepo(this.profile.sub, {
-        repo_id, name, url
-      } as Repo)
+      let newRepo = { repo_id, name, url } as Repo
+      this.favRepoAdded.emit(newRepo)
+      console.log('Emitted a new repo!')
+      this.userService.addFavRepo(this.profile.sub, newRepo)
         .subscribe(res => {
           console.log(res)
         })
