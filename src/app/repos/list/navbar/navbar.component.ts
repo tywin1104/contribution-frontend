@@ -9,15 +9,12 @@ import { UserService } from '../../../_services/user.service'
 })
 export class NavbarComponent implements OnInit {
 
+
   profile: any
   isVisible = false;
-  data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.'
-  ];
+  favoriteRepos: any
+  currentUserName: string
+
 
   constructor(public auth: AuthService, private userService: UserService) {
     document.body.style.backgroundColor = "rgb(27,39,59)";
@@ -27,14 +24,27 @@ export class NavbarComponent implements OnInit {
     if (this.auth.isAuthenticated()) {
       if (this.auth.userProfile) {
         this.profile = this.auth.userProfile;
-        console.log(this.profile)
+        this.userService.getFavRepos(this.profile.sub)
+          .subscribe(repos => {
+            this.favoriteRepos = repos.favorite_repos
+            console.log(this.favoriteRepos)
+          })
       } else {
         this.auth.getProfile((err, profile) => {
           this.profile = profile;
-          console.log(this.profile)
         });
       }
     }
+    // if(this.auth.isAuthenticated()) {
+    //   this.profile = this.auth.returnProfile()
+    //   this.currentUserName = this.profile.sub
+    //   this.userService.getFavRepos(this.profile.sub)
+    //       .subscribe(repos => {
+    //         this.favoriteRepos = repos.favorite_repos
+    //         console.log(this.favoriteRepos)
+    //       })
+
+    // }
   }
   showModal(): void {
     this.isVisible = true;
@@ -49,5 +59,4 @@ export class NavbarComponent implements OnInit {
     console.log('Button cancel clicked!');
     this.isVisible = false;
   }
-
 }

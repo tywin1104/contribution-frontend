@@ -10,7 +10,8 @@
               <span class="card-title">{{ result.node.name}}
               </span>
             </a>
-            <button nz-button (click)="tryToAddFav()" nzType="default" nzShape="circle" class="addFavbutton"><i class="anticon anticon-star-o"></i>
+            <button nz-button (click)="tryToAddFav(result.node.id, result.node.name,result.node.url)" nzType="default"
+              nzShape="circle" class="addFavbutton"><i class="anticon anticon-star-o"></i>
             </button>
 
             <div class="repo-description">{{ result.node.description}} </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { HttpHeaders } from '@angular/common/http';
+import { Repo } from '../_modal/repo'
 
 
 const httpOptions = {
@@ -40,5 +41,17 @@ export class UserService {
           return user
         }
       })
+  }
+
+  getFavRepos(userName: string): Observable<any> {
+    return this.http.get(`api/users/${userName}/favrepos`)
+  }
+
+  addFavRepo(userName: string, newRepo: Repo): Observable<any> {
+    return this.http.post(`api/users/${userName}/favrepos`, {
+      repo_id: newRepo.repo_id,
+      name: newRepo.name,
+      url: newRepo.url
+    }, httpOptions)
   }
 }

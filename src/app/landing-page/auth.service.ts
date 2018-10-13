@@ -61,6 +61,18 @@ export class AuthService {
     });
   }
 
+  public returnProfile() {
+    if (this.isAuthenticated()) {
+      if (this.userProfile) {
+        return this.userProfile;
+      } else {
+        this.getProfile((err, profile) => {
+          return profile
+        });
+      }
+    }
+  }
+
   private setSession(authResult): void {
     // Set the time that the access token will expire at
     console.log(authResult.expiresIn);

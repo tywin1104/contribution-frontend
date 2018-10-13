@@ -4,6 +4,9 @@ import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 import { NzModalService } from 'ng-zorro-antd';
 import { AuthService } from '../../../landing-page/auth.service'
+import { UserService } from '../../../_services/user.service'
+import { Repo } from '../../../_modal/repo'
+
 
 @Component({
   selector: 'app-repo-list',
@@ -13,6 +16,7 @@ import { AuthService } from '../../../landing-page/auth.service'
 export class RepoListComponent implements OnInit {
   current_cursor = null;
   results = [];
+  profile: any;
   repo_query = gql`
   query SearchRepos($queryString: String! , $cursor_val: String) {
     search(query: $queryString, type: REPOSITORY, after: $cursor_val, first: 12) {
@@ -41,7 +45,12 @@ export class RepoListComponent implements OnInit {
    }
  }
   `
-  constructor(private apollo: Apollo, private modalService: NzModalService, public auth: AuthService) { }
+  constructor(
+    private apollo: Apollo,
+    private modalService: NzModalService,
+    public auth: AuthService,
+    private userService: UserService) {
+  }
 
   ngOnInit() {
     this.append_repos();
@@ -102,11 +111,18 @@ export class RepoListComponent implements OnInit {
         })
     }
   }
-  tryToAddFav() {
+  tryToAddFav(repo_id, name, url) {
     if (this.auth.isAuthenticated()) {
-      return this.success();
+      this.success();
+      this.profile = this.auth.returnProfile()
+      this.userService.addFavRepo(this.profile.sub, {
+        repo_id, name, url
+      } as Repo)
+        .subscribe(res => {
+          console.log(res)
+        })
     } else {
-      return this.error();
+      this.error();
     }
   }
 
@@ -126,4 +142,5 @@ export class RepoListComponent implements OnInit {
 
     window.setTimeout(() => modal.destroy(), 1000);
   }
+
 }

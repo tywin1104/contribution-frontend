@@ -25,11 +25,12 @@
 </nav>
 
 <!-- Modal -->
-<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-  <h3 [ngStyle]="{'margin': '16px 0' }">Small Size</h3>
-  <nz-list [nzDataSource]="data" nzBordered nzSize="small" [nzHeader]="'Header'" [nzFooter]="'Footer'" [nzRenderItem]="item">
-    <ng-template #item let-item>
-      <nz-list-item [nzContent]="item"></nz-list-item>
-    </ng-template>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Bookmarked Repositories" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+
+  <nz-list [nzDataSource]="data" nzBordered nzSize="small" [nzRenderItem]="item">
+
+    <nz-list-item *ngFor="let repo of favoriteRepos">
+      <i class="anticon anticon-heart"></i><a href={{repo.url}} target="_blank">{{ " " + repo.name}}</a>
+    </nz-list-item>
   </nz-list>
 </nz-modal>
