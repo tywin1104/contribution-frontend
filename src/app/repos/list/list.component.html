@@ -14,5 +14,5 @@
   <app-community-repos></app-community-repos>
 </div>
 
-<app-repo-list [profile]="profile" (favRepoAdded)="onFavRepoAdded($event)"></app-repo-list>
+<app-repo-list [favoriteRepos]="favoriteRepos" [profile]="profile" (favRepoAdded)="onFavRepoAdded($event)"></app-repo-list>
 <nz-back-top></nz-back-top>

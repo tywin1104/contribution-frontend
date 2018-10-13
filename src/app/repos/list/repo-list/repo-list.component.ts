@@ -15,6 +15,7 @@ import { Repo } from '../../../_modal/repo'
 })
 export class RepoListComponent implements OnInit {
   @Input() profile;
+  @Input() favoriteRepos;
   @Output() favRepoAdded = new EventEmitter<Repo>();
   current_cursor = null;
   results = [];
@@ -104,7 +105,7 @@ export class RepoListComponent implements OnInit {
       this.success();
       let newRepo = { repo_id, name, url } as Repo
       this.favRepoAdded.emit(newRepo)
-      console.log('Emitted a new repo!')
+      console.log('Emitted a new fav repo!')
       this.userService.addFavRepo(this.profile.sub, newRepo)
         .subscribe(res => {
           console.log(res)
@@ -129,6 +130,14 @@ export class RepoListComponent implements OnInit {
     });
 
     window.setTimeout(() => modal.destroy(), 1000);
+  }
+
+  checkFavRepoExist(repo_id) {
+    if (this.auth.isAuthenticated()) {
+      return this.favoriteRepos.some(repo => repo.repo_id === repo_id)
+    } else {
+      return false
+    }
   }
 
 }
