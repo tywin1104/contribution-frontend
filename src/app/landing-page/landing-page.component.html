@@ -1,183 +1,190 @@
 <pre class="full-profile">{{ profile | json }}</pre>
 <section class="hero">
-  <section class="navigation">
-      <header>
-          <div class="header-content">
-              <div class="logo"><a href="#"><img src="../../assets/img/sedna-logo.png" alt="Sedna logo"></a></div>
-              <div class="header-nav">
-                  <nav>
-                      <!-- <ul class="primary-nav"> -->
-                          <!-- <li><a href="#features">Features</a></li> -->
-                          <!-- <li><a href="#assets">Assets</a></li> -->
-                      <!-- </ul> -->
-                      <ul class="member-actions">
-                          <li><a *ngIf="!auth.isAuthenticated()"
-                                class="login"
-                                (click)="auth.login()">Log In
-                              </a>
-                          </li>
-                          <li *ngIf="auth.isAuthenticated()">
-                              <p id="profile-name">{{ profile?.nickname }}</p>
-                              <img src="{{profile?.picture}}" class="avatar" alt="avatar">
-                          </li>
-                          <li><a
-                            *ngIf="auth.isAuthenticated()"
-                            (click)="auth.logout()"
-                            class="btn-white btn-small">Log Out</a>
+    <section class="navigation">
+        <header>
+            <div class="header-content">
+                <div class="logo"><a href="#"><img src="../../assets/img/sedna-logo.png" alt="Sedna logo"></a></div>
+                <div class="header-nav">
+                    <nav>
+                        <!-- <ul class="primary-nav"> -->
+                        <!-- <li><a href="#features">Features</a></li> -->
+                        <!-- <li><a href="#assets">Assets</a></li> -->
+                        <!-- </ul> -->
+                        <ul class="member-actions">
+                            <li><a *ngIf="!auth.isAuthenticated()" class="login" (click)="auth.login('/')">Log In
+                                </a>
                             </li>
-                      </ul>
-                  </nav>
-              </div>
-              <div class="navicon">
-                  <a class="nav-toggle" href="#"><span></span></a>
-              </div>
-          </div>
-      </header>
-  </section>
-  <div class="container">
-      <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-              <div class="hero-content text-center">
-                  <h1>Design, collaborate, win!</h1>
-                  <p class="intro">Introducing “Sedna”. A responsive one page website, designed & developed exclusively for Codrops.</p>
-                  <a  routerLink="/open-source-projects"
-                      class="btn btn-fill btn-large btn-margin-right">Dive In!</a> <a href="#" class="btn btn-accent btn-large">Learn more</a>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="down-arrow floating-arrow"><a href="#"><i class="fa fa-angle-down"></i></a></div>
+                            <li *ngIf="auth.isAuthenticated()">
+                                <p id="profile-name">{{ profile?.nickname }}</p>
+                                <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+                            </li>
+                            <li><a *ngIf="auth.isAuthenticated()" (click)="auth.logout()" class="btn-white btn-small">Log
+                                    Out</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="navicon">
+                    <a class="nav-toggle" href="#"><span></span></a>
+                </div>
+            </div>
+        </header>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="hero-content text-center">
+                    <h1>Design, collaborate, win!</h1>
+                    <p class="intro">Introducing “Sedna”. A responsive one page website, designed & developed
+                        exclusively for Codrops.</p>
+                    <a routerLink="/open-source-projects" class="btn btn-fill btn-large btn-margin-right">Dive In!</a>
+                    <a href="#" class="btn btn-accent btn-large">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="down-arrow floating-arrow"><a href="#"><i class="fa fa-angle-down"></i></a></div>
 </section>
 <section class="intro section-padding">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-4 intro-feature">
-              <div class="intro-icon">
-                  <span data-icon="&#xe033;" class="icon"></span>
-              </div>
-              <div class="intro-content">
-                  <h5>Easily Customised</h5>
-                  <p>Easily customise Sedna to suit your start up, portfolio or product. Take advantage of the layered Sketch file and bring your product to life.</p>
-              </div>
-          </div>
-          <div class="col-md-4 intro-feature">
-              <div class="intro-icon">
-                  <span data-icon="&#xe030;" class="icon"></span>
-              </div>
-              <div class="intro-content">
-                  <h5>Modern Design</h5>
-                  <p>Designed with modern trends and techniques in mind, Sedna will help your product stand out in an already saturated market.</p>
-              </div>
-          </div>
-          <div class="col-md-4 intro-feature">
-              <div class="intro-icon">
-                  <span data-icon="&#xe046;" class="icon"></span>
-              </div>
-              <div class="intro-content last">
-                  <h5>Responsive Development</h5>
-                  <p>Built using the latest web technologies like html5, css3, and jQuery, rest assured Sedna will look smashing on every device under the sun.</p>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 intro-feature">
+                <div class="intro-icon">
+                    <span data-icon="&#xe033;" class="icon"></span>
+                </div>
+                <div class="intro-content">
+                    <h5>Easily Customised</h5>
+                    <p>Easily customise Sedna to suit your start up, portfolio or product. Take advantage of the
+                        layered Sketch file and bring your product to life.</p>
+                </div>
+            </div>
+            <div class="col-md-4 intro-feature">
+                <div class="intro-icon">
+                    <span data-icon="&#xe030;" class="icon"></span>
+                </div>
+                <div class="intro-content">
+                    <h5>Modern Design</h5>
+                    <p>Designed with modern trends and techniques in mind, Sedna will help your product stand out in an
+                        already saturated market.</p>
+                </div>
+            </div>
+            <div class="col-md-4 intro-feature">
+                <div class="intro-icon">
+                    <span data-icon="&#xe046;" class="icon"></span>
+                </div>
+                <div class="intro-content last">
+                    <h5>Responsive Development</h5>
+                    <p>Built using the latest web technologies like html5, css3, and jQuery, rest assured Sedna will
+                        look smashing on every device under the sun.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <section class="features section-padding" id="features">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-5 col-md-offset-7">
-              <div class="feature-list">
-                  <h3>Sedna will drive your product forward</h3>
-                  <p>Present your product, start up, or portfolio in a beautifully modern way. Turn your visitors in to clients.</p>
-                  <ul class="features-stack">
-                      <li class="feature-item">
-                          <div class="feature-icon">
-                              <span data-icon="&#xe03e;" class="icon"></span>
-                          </div>
-                          <div class="feature-content">
-                              <h5>Universal & Responsive</h5>
-                              <p>Sedna is universal and will look smashing on any device.</p>
-                          </div>
-                      </li>
-                      <li class="feature-item">
-                          <div class="feature-icon">
-                              <span data-icon="&#xe040;" class="icon"></span>
-                          </div>
-                          <div class="feature-content">
-                              <h5>User Centric Design</h5>
-                              <p>Sedna takes advantage of common design patterns, allowing for a seamless experience for users of all levels.</p>
-                          </div>
-                      </li>
-                      <li class="feature-item">
-                          <div class="feature-icon">
-                              <span data-icon="&#xe03c;" class="icon"></span>
-                          </div>
-                          <div class="feature-content">
-                              <h5>Clean reusable code</h5>
-                              <p>Download and re-use the Sedna open source code for any other project you like.</p>
-                          </div>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="device-showcase">
-      <div class="devices">
-          <div class="ipad-wrap wp1"></div>
-          <div class="iphone-wrap wp2"></div>
-      </div>
-  </div>
-  <div class="responsive-feature-img"><img src="i
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-7">
+                <div class="feature-list">
+                    <h3>Sedna will drive your product forward</h3>
+                    <p>Present your product, start up, or portfolio in a beautifully modern way. Turn your visitors in
+                        to clients.</p>
+                    <ul class="features-stack">
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <span data-icon="&#xe03e;" class="icon"></span>
+                            </div>
+                            <div class="feature-content">
+                                <h5>Universal & Responsive</h5>
+                                <p>Sedna is universal and will look smashing on any device.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <span data-icon="&#xe040;" class="icon"></span>
+                            </div>
+                            <div class="feature-content">
+                                <h5>User Centric Design</h5>
+                                <p>Sedna takes advantage of common design patterns, allowing for a seamless experience
+                                    for users of all levels.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">
+                                <span data-icon="&#xe03c;" class="icon"></span>
+                            </div>
+                            <div class="feature-content">
+                                <h5>Clean reusable code</h5>
+                                <p>Download and re-use the Sedna open source code for any other project you like.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="device-showcase">
+        <div class="devices">
+            <div class="ipad-wrap wp1"></div>
+            <div class="iphone-wrap wp2"></div>
+        </div>
+    </div>
+    <div class="responsive-feature-img"><img src="i
     es.png" alt="responsive devices"></div>
 </section>
 <section class="features-extra section-padding" id="assets">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-5">
-              <div class="feature-list">
-                  <h3>Designed with Sketch!</h3>
-                  <p>Easily change/switch/swap every placeholder inside every image on Sedna with the included Sketch files. You’ll have this template customised to suit your business in no time! </p>
-                  <p>Nam vehicula malesuada lectus, interdum fringilla nibh. Duis aliquam vitae metus a pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum augue quis augue ornare, eget faucibus felis pharetra. Proin condimentum et leo quis fringilla.
-                  </p>
-                  <a href="#" class="btn btn-ghost btn-accent btn-small">What's Sketch?</a>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="macbook-wrap wp3"></div>
-  <div class="responsive-feature-img"><img src="../../assets/img/macbook-pro.png" alt="responsive devices"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="feature-list">
+                    <h3>Designed with Sketch!</h3>
+                    <p>Easily change/switch/swap every placeholder inside every image on Sedna with the included Sketch
+                        files. You’ll have this template customised to suit your business in no time! </p>
+                    <p>Nam vehicula malesuada lectus, interdum fringilla nibh. Duis aliquam vitae metus a pharetra.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum augue quis augue
+                        ornare, eget faucibus felis pharetra. Proin condimentum et leo quis fringilla.
+                    </p>
+                    <a href="#" class="btn btn-ghost btn-accent btn-small">What's Sketch?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="macbook-wrap wp3"></div>
+    <div class="responsive-feature-img"><img src="../../assets/img/macbook-pro.png" alt="responsive devices"></div>
 </section>
 ·
 <section class="to-top">
-  <div class="container">
-      <div class="row">
-          <div class="to-top-wrap">
-              <a href="#top" class="top"><i class="fa fa-angle-up"></i></a>
-          </div>
-      </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="to-top-wrap">
+                <a href="#top" class="top"><i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+    </div>
 </section>
 <footer>
-  <div class="container">
-      <div class="row">
-          <div class="col-md-7">
-              <div class="footer-links">
-                  <ul class="footer-group">
-                      <li><a href="#">Features</a></li>
-                      <li><a href="#">Pricing</a></li>
-                      <li><a href="#">Sign up</a></li>
-                      <li><a href="http://tympanus.net/codrops/licensing/">Licence</a></li>
-                      <li><a href="http://tympanus.net/codrops/">Codrops</a></li>
-                      <li><a href="http://www.dribbble.com/">Dribbble</a></li>
-                  </ul>
-                  <p>Copyright © 2015 <a href="#">Sedna</a><br>
-                  <a href="http://tympanus.net/codrops/licensing/">Licence</a> | Crafted with <span class="fa fa-heart pulse2"></span> for <a href="https://tympanus.net/codrops/">Codrops</a>.</p>
-              </div>
-          </div>
-          <div class="social-share">
-              <p>Share Sedna with your friends</p>
-              <a href="#" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i class="fa fa-facebook"></i></a>
-          </div>
-      </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="footer-links">
+                    <ul class="footer-group">
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="http://tympanus.net/codrops/licensing/">Licence</a></li>
+                        <li><a href="http://tympanus.net/codrops/">Codrops</a></li>
+                        <li><a href="http://www.dribbble.com/">Dribbble</a></li>
+                    </ul>
+                    <p>Copyright © 2015 <a href="#">Sedna</a><br>
+                        <a href="http://tympanus.net/codrops/licensing/">Licence</a> | Crafted with <span class="fa fa-heart pulse2"></span>
+                        for <a href="https://tympanus.net/codrops/">Codrops</a>.</p>
+                </div>
+            </div>
+            <div class="social-share">
+                <p>Share Sedna with your friends</p>
+                <a href="#" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i
+                        class="fa fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
 </footer>

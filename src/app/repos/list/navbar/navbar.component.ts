@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../landing-page/auth.service'
+import { UserService } from '../../../_services/user.service'
 
 @Component({
   selector: 'app-navbar',
@@ -18,20 +19,22 @@ export class NavbarComponent implements OnInit {
     'Los Angeles battles huge wildfires.'
   ];
 
-  constructor(public auth: AuthService) {
-    console.log(auth.isAuthenticated)
+  constructor(public auth: AuthService, private userService: UserService) {
     document.body.style.backgroundColor = "rgb(27,39,59)";
   }
 
   ngOnInit() {
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile;
-    } else {
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
+    if (this.auth.isAuthenticated()) {
+      if (this.auth.userProfile) {
+        this.profile = this.auth.userProfile;
+        console.log(this.profile)
+      } else {
+        this.auth.getProfile((err, profile) => {
+          this.profile = profile;
+          console.log(this.profile)
+        });
+      }
     }
-    console.log(this.profile)
   }
   showModal(): void {
     this.isVisible = true;

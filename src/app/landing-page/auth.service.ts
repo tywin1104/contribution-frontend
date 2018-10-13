@@ -19,17 +19,25 @@ export class AuthService {
 
   userProfile: any;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
-  public login(): void {
+  public login(redirectUrl): void {
+    // jump to callback page and wait for.. handleAuth
     this.auth0.authorize();
+    localStorage.setItem('redirectUrl', redirectUrl)
   }
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.router.navigate(['/']);
+        let redirectUrl = localStorage.getItem('redirectUrl')
+        if (redirectUrl == null) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate([redirectUrl]);
+          localStorage.removeItem('redirectUrl')
+        }
       } else if (err) {
         this.router.navigate(['/']);
         console.log(err);
@@ -69,7 +77,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    // this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {

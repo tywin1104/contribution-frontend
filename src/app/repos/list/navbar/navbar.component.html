@@ -6,13 +6,13 @@
       <div class="user-info">
         <nz-dropdown *ngIf="auth.isAuthenticated()">
           <a nz-dropdown>
-            <nz-avatar nzIcon="anticon anticon-user" [nzSrc]="profile.picture"></nz-avatar> <i class="anticon anticon-down"></i>
+            <nz-avatar nzIcon="anticon anticon-user" [nzSrc]="this.profile?.picture"></nz-avatar> <i class="anticon anticon-down"></i>
           </a>
-
           <ul nz-menu>
             <li nz-menu-item (click)="showModal()"><i class="anticon anticon-heart"></i> My Favorite Repos</li>
             <li nz-menu-item (click)="auth.logout()">Log Out</li>
-            <li nz-menu-item (click)="log('3rd menu item')">3rd menu item</li>
+            <li nz-menu-item (click)="this.findOrCreate('tianyasasai')">test Add User</li>
+
           </ul>
         </nz-dropdown>
 

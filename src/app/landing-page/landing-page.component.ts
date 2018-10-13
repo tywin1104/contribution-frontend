@@ -15,8 +15,7 @@ export class LandingPageComponent implements OnInit {
   profile: any;
 
   constructor(public auth: AuthService) {
-    // console.log(auth.isAuthenticated())
-    // auth.handleAuthentication();
+    auth.handleAuthentication();
   }
 
   ngOnInit() {
