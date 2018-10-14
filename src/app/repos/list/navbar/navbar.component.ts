@@ -8,7 +8,7 @@ import { AuthService } from '../../../landing-page/auth.service'
 })
 export class NavbarComponent implements OnInit {
   @Input() profile;
-  @Input() favoriteRepos: string;
+  @Input() favoriteRepos;
 
   isVisible = false;
   currentUserName: string

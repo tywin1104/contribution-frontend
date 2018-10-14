@@ -139,5 +139,4 @@ export class RepoListComponent implements OnInit {
       return false
     }
   }
-
 }

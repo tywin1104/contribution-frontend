@@ -1,8 +1,8 @@
 <nav>
   <div class="nav-wrapper">
     <div class="col s12">
-      <a href="#!" class="breadcrumb">HOME</a>
-      <a href="#!" class="breadcrumb">Find-repos</a>
+      <a routerLink="/home" class="breadcrumb">HOME</a>
+      <a class="breadcrumb">Find-repos</a>
       <div class="user-info">
         <nz-dropdown *ngIf="auth.isAuthenticated()">
           <a nz-dropdown>

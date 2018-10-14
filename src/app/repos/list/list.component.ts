@@ -27,6 +27,9 @@ export class ListComponent implements OnInit {
           this.populateFavReops()
         });
       }
+    } else {
+      this.profile = null;
+      this.favoriteRepos = []
     }
   }
 

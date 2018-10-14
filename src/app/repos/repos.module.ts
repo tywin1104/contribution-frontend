@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router'
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { onError } from 'apollo-link-error';
@@ -24,6 +25,7 @@ import { NavbarComponent } from './list/navbar/navbar.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    RouterModule,
     ApolloModule,
     HttpLinkModule,
     InfiniteScrollModule,

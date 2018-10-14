@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,12 +15,12 @@ export class LandingPageComponent implements OnInit {
 
   profile: any;
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private router: Router) {
     auth.handleAuthentication();
   }
 
   ngOnInit() {
-    console.log(this.auth.isAuthenticated())
+    console.log(`Result: ${this.auth.isAuthenticated()}`)
     if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
     } else {
@@ -30,4 +31,7 @@ export class LandingPageComponent implements OnInit {
     console.log(this.profile)
   }
 
+  navigate() {
+    this.router.navigateByUrl('/open-source-project');
+  }
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HttpModule, Http } from '@angular/http';
+import { RouterModule } from '@angular/router'
 
 import { AppRoutingModule } from './app-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component'
@@ -32,7 +32,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     NgZorroAntdModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [AuthService, { provide: NZ_I18N, useValue: en_US }, UserService],
   bootstrap: [AppComponent]

@@ -5,14 +5,14 @@ import { CallbackComponent } from './callback/callback.component'
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LandingPageComponent },
   { path: 'callback', component: CallbackComponent },
   {
     path: 'open-source-projects',
     loadChildren: './repos/repos.module#ReposModule'
   },
-  { path: '**', redirectTo: 'home' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({

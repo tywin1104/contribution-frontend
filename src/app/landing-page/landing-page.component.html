@@ -1,17 +1,14 @@
-<pre class="full-profile">{{ profile | json }}</pre>
-<section class="hero">
+<!-- <pre class="full-profile">{{ profile | json }}</pre> -->
+<section class=" hero">
     <section class="navigation">
         <header>
             <div class="header-content">
                 <div class="logo"><a href="#"><img src="../../assets/img/sedna-logo.png" alt="Sedna logo"></a></div>
                 <div class="header-nav">
                     <nav>
-                        <!-- <ul class="primary-nav"> -->
-                        <!-- <li><a href="#features">Features</a></li> -->
-                        <!-- <li><a href="#assets">Assets</a></li> -->
-                        <!-- </ul> -->
                         <ul class="member-actions">
-                            <li><a *ngIf="!auth.isAuthenticated()" class="login" (click)="auth.login('/')">Log In
+                            <li><a [style.display]="!auth.isAuthenticated() ? 'inherit' : 'none'" class="login" (click)="auth.login('/')">Log
+                                    In
                                 </a>
                             </li>
                             <li *ngIf="auth.isAuthenticated()">
@@ -37,7 +34,8 @@
                     <h1>Design, collaborate, win!</h1>
                     <p class="intro">Introducing “Sedna”. A responsive one page website, designed & developed
                         exclusively for Codrops.</p>
-                    <a routerLink="/open-source-projects" class="btn btn-fill btn-large btn-margin-right">Dive In!</a>
+                    <a (click)="navigate()" class="btn btn-fill btn-large btn-margin-right">Dive
+                        In!</a>
                     <a href="#" class="btn btn-accent btn-large">Learn more</a>
                 </div>
             </div>
@@ -64,7 +62,8 @@
                 </div>
                 <div class="intro-content">
                     <h5>Modern Design</h5>
-                    <p>Designed with modern trends and techniques in mind, Sedna will help your product stand out in an
+                    <p>Designed with modern trends and techniques in mind, Sedna will help your product stand out
+                        in an
                         already saturated market.</p>
                 </div>
             </div>
@@ -74,7 +73,8 @@
                 </div>
                 <div class="intro-content last">
                     <h5>Responsive Development</h5>
-                    <p>Built using the latest web technologies like html5, css3, and jQuery, rest assured Sedna will
+                    <p>Built using the latest web technologies like html5, css3, and jQuery, rest assured Sedna
+                        will
                         look smashing on every device under the sun.</p>
                 </div>
             </div>
@@ -87,7 +87,8 @@
             <div class="col-md-5 col-md-offset-7">
                 <div class="feature-list">
                     <h3>Sedna will drive your product forward</h3>
-                    <p>Present your product, start up, or portfolio in a beautifully modern way. Turn your visitors in
+                    <p>Present your product, start up, or portfolio in a beautifully modern way. Turn your visitors
+                        in
                         to clients.</p>
                     <ul class="features-stack">
                         <li class="feature-item">
@@ -105,7 +106,8 @@
                             </div>
                             <div class="feature-content">
                                 <h5>User Centric Design</h5>
-                                <p>Sedna takes advantage of common design patterns, allowing for a seamless experience
+                                <p>Sedna takes advantage of common design patterns, allowing for a seamless
+                                    experience
                                     for users of all levels.</p>
                             </div>
                         </li>
@@ -138,7 +140,8 @@
             <div class="col-md-5">
                 <div class="feature-list">
                     <h3>Designed with Sketch!</h3>
-                    <p>Easily change/switch/swap every placeholder inside every image on Sedna with the included Sketch
+                    <p>Easily change/switch/swap every placeholder inside every image on Sedna with the included
+                        Sketch
                         files. You’ll have this template customised to suit your business in no time! </p>
                     <p>Nam vehicula malesuada lectus, interdum fringilla nibh. Duis aliquam vitae metus a pharetra.
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum augue quis augue
