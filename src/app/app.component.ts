@@ -8,22 +8,11 @@ import { UserService } from './_services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  profile: any
+  profile;
   constructor(public auth: AuthService, private userService: UserService) {
     auth.handleAuthentication();
   }
 
   ngOnInit() {
-    if (this.auth.isAuthenticated()) {
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-        this.userService.findOrCreate(this.profile.sub)
-      } else {
-        this.auth.getProfile((err, profile) => {
-          this.profile = profile;
-          this.userService.findOrCreate(this.profile.sub)
-        });
-      }
-    }
   }
 }

@@ -3,6 +3,7 @@ import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
+import { UserService } from '../_services/user.service'
 
 (window as any).global = window;
 
@@ -18,8 +19,9 @@ export class AuthService {
   });
 
   userProfile: any;
+  profile;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private userService: UserService) { }
 
   public login(redirectUrl): void {
     // jump to callback page and wait for.. handleAuth
@@ -31,19 +33,23 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        let redirectUrl = localStorage.getItem('redirectUrl')
-        if (redirectUrl == null) {
-          this.router.navigate(['/']);
+        let user = null
+        if (this.userProfile) {
+          this.profile = this.userProfile;
+          this.userService.findOrCreate(this.profile.sub)
         } else {
-          this.router.navigate([redirectUrl]);
-          localStorage.removeItem('redirectUrl')
+          this.getProfile((err, profile) => {
+            this.profile = profile;
+            this.userService.findOrCreate(this.profile.sub)
+          });
         }
+        this.handleRedirect()
       } else if (err) {
         this.router.navigate(['/']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
-    });
+    })
   }
 
   public getProfile(cb): void {
@@ -76,8 +82,10 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    // Go back to the home route
-    // this.router.navigate(['/']);
+    this.auth0.logout({
+      returnTo: 'http://localhost:5000/',
+      clientID: AUTH_CONFIG.clientID
+    })
   }
 
   public isAuthenticated(): boolean {
@@ -87,5 +95,13 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+  private handleRedirect(): void {
+    let redirectUrl = localStorage.getItem('redirectUrl')
+    if (redirectUrl == null) {
+      this.router.navigate(['/']);
+    } else {
+      this.router.navigate([redirectUrl]);
+      localStorage.removeItem('redirectUrl')
+    }
+  }
 }
-
