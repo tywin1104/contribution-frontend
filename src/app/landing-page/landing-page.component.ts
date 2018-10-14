@@ -32,6 +32,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigateByUrl('/open-source-project');
+    this.router.navigateByUrl('/open-source-projects');
   }
 }
