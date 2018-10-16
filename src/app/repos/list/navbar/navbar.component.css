@@ -10,3 +10,16 @@ nav a{
     float: right;
     padding-right: 15%;
 }
+
+.removeFavButton {
+    float: right;
+    margin: 0 0 auto auto;
+}
+
+.anticon-frown {
+    font-size: 3rem;
+}
+
+.emptyMessage p {
+    font-size: 1.5rem;
+}

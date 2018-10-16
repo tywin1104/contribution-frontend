@@ -25,11 +25,20 @@
 <!-- Modal -->
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Bookmarked Repositories" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
 
-  <nz-list [nzDataSource]="data" nzBordered nzSize="small" [nzRenderItem]="item">
+  <nz-list *ngIf="favoriteRepos.length > 0" [nzDataSource]="data" nzBordered nzSize="small" [nzRenderItem]="item">
 
     <nz-list-item *ngFor="let repo of favoriteRepos">
-      <i class="anticon anticon-heart"></i><a href={{repo.url}} target="_blank">{{ " " + repo.name}}</a>
-      <button (click)="tryToDeleteFav(repo.name)">delete</button>
+      <i class="anticon anticon-heart"></i><a href={{repo.url}} target="_blank">
+        <h4>{{ repo.name}}</h4>
+      </a>
+      <button class="removeFavButton" (click)="tryToDeleteFav(repo.name)" nz-button nzType="danger"><i class="anticon anticon-delete"></i></button>
     </nz-list-item>
   </nz-list>
+
+  <div *ngIf="favoriteRepos.length === 0">
+    <i class="anticon anticon-frown"></i>
+    <p class="emptyMessage">
+      It is empty right now. Go find something cool & fresh!
+    </p>
+  </div>
 </nz-modal>
