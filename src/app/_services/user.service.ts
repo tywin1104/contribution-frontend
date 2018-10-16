@@ -54,4 +54,8 @@ export class UserService {
       url: newRepo.url
     }, httpOptions)
   }
+
+  deleteFavRepo(userName: string, repoName: string): Observable<any> {
+    return this.http.delete(`api/users/${userName}/favrepos/${repoName}`)
+  }
 }

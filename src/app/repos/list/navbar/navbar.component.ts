@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../../landing-page/auth.service'
+import { UserService } from '../../../_services/user.service'
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,12 @@ export class NavbarComponent implements OnInit {
   @Input() profile;
   @Input() favoriteRepos;
 
+  @Output() favRepoDeleted = new EventEmitter<string>();
+
   isVisible = false;
   currentUserName: string
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private userService: UserService) {
     document.body.style.backgroundColor = "rgb(27,39,59)"
   }
 
@@ -36,5 +39,14 @@ export class NavbarComponent implements OnInit {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  tryToDeleteFav(repoName) {
+    this.favRepoDeleted.emit(repoName)
+    console.log('Emitted to delete a repo!')
+    this.userService.deleteFavRepo(this.profile.sub, repoName)
+      .subscribe(res => {
+        console.log(res)
+      })
   }
 }

@@ -45,4 +45,12 @@ export class ListComponent implements OnInit {
   onFavRepoAdded(newRepo: Repo) {
     this.favoriteRepos.push(newRepo)
   }
+
+  onFavRepoDeleted(repoName: string) {
+    this.favoriteRepos.some((item, index) => {
+      if (this.favoriteRepos[index]['name'] === repoName) {
+        this.favoriteRepos.splice(index, 1);
+      }
+    })
+  }
 }

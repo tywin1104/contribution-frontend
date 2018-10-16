@@ -29,6 +29,7 @@
 
     <nz-list-item *ngFor="let repo of favoriteRepos">
       <i class="anticon anticon-heart"></i><a href={{repo.url}} target="_blank">{{ " " + repo.name}}</a>
+      <button (click)="tryToDeleteFav(repo.name)">delete</button>
     </nz-list-item>
   </nz-list>
 </nz-modal>

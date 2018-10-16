@@ -1,4 +1,4 @@
-<app-navbar [favoriteRepos]="favoriteRepos" [profile]="profile"></app-navbar>
+<app-navbar [favoriteRepos]="favoriteRepos" [profile]="profile" (favRepoDeleted)="onFavRepoDeleted($event)"></app-navbar>
 <div class="container text-center">
   <div class="coverPage ">
     <h1>
