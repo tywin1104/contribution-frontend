@@ -18,6 +18,7 @@ export class RepoListComponent implements OnInit {
   @Input() favoriteRepos;
   @Output() favRepoAdded = new EventEmitter<Repo>();
   current_cursor = null;
+  timeStr: any;
   results = [];
   repo_query = gql`
   query SearchRepos($queryString: String! , $cursor_val: String) {
@@ -55,6 +56,9 @@ export class RepoListComponent implements OnInit {
   }
 
   ngOnInit() {
+    let date = new Date()
+    date.setMonth(date.getMonth() - 1)
+    this.timeStr = date.toISOString().split('T')[0]
     this.append_repos();
   }
 
@@ -63,42 +67,39 @@ export class RepoListComponent implements OnInit {
     // console.log(res);
     if (res != undefined) {
       res.forEach(item => {
+        let isInArray = this.results.find(function (el) { return el.cursor === item.cursor }) !== undefined;
+        if (isInArray) {
+          console.log("Abort this. already exists")
+          return;
+        }
         this.results.push(item);
       });
+      console.log(res)
       this.current_cursor = this.results[this.results.length - 1].cursor;
-      console.log(`Current cursor is ${this.current_cursor}`);
+      console.log(`Current cursor is updated to ${this.current_cursor}`);
     }
   }
   // When scroll down the screen
   onScroll() {
-    // console.log("Scrolled");
+    console.log("Scrolled");
     this.append_repos();
   }
 
   append_repos() {
-    try {
-      let cachedResponse = this.apollo.getClient().readQuery({
-        query: this.repo_query
-      });
-      // console.log("Found in Apollo cache!")
-      // console.log(cachedResponse)
-    } catch (e) {
-      // console.log("Could not get from cache. Make request..")
-      this.apollo.watchQuery<any>({
-        query: this.repo_query,
-        variables: {
-          errorPolicy: 'all',
-          queryString: "good-first-issues:>10  stars:>20 pushed:>2018-09-01  is:public archived:false",
-          cursor_val: this.current_cursor
-        }
+    this.apollo.watchQuery<any>({
+      query: this.repo_query,
+      variables: {
+        errorPolicy: 'all',
+        queryString: `good-first-issues:>10  stars:>100  pushed:>${this.timeStr}  is:public archived:false`,
+        cursor_val: this.current_cursor
+      }
+    })
+      .valueChanges
+      .pipe(
+        map(result => result.data.search.edges)
+      ).subscribe((result: any) => {
+        this.onSuccess(result);
       })
-        .valueChanges
-        .pipe(
-          map(result => result.data.search.edges)
-        ).subscribe((result: any) => {
-          this.onSuccess(result);
-        })
-    }
   }
   tryToAddFav(repo_id, name, url) {
     if (this.auth.isAuthenticated()) {

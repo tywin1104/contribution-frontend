@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
     this.userService.getFavRepos(userName)
       .subscribe(repos => {
         this.favoriteRepos = repos.favorite_repos
-        console.log(this.favoriteRepos)
+        // console.log(this.favoriteRepos)
       })
   }
 

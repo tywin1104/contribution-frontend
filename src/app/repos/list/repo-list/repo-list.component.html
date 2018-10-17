@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row  flex repo-container" infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollThrottle]="50"
+  <div class="row  flex repo-container" infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="500"
     [infiniteScrollDisabled]="false" (scrolled)="onScroll()">
     <div *ngFor="let result of results" class="col s12 m4">
       <span nz-tooltip nzTitle="{{result.node.issues.totalCount}} open issues">
