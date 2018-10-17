@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-community-repos',
@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class CommunityReposComponent implements OnInit {
 
   constructor() { }
+  @Input() profile;
+  personal_repos = []
+  isVisible = false;
+  isOkLoading = false;
+
   data = [
     {
       title: 'Ant Design Title 1'
@@ -22,6 +27,25 @@ export class CommunityReposComponent implements OnInit {
       title: 'Ant Design Title 4'
     }
   ];
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    this.isOkLoading = true;
+    window.setTimeout(() => {
+      this.isVisible = false;
+      this.isOkLoading = false;
+    }, 3000);
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
+  }
+
+  getGithubAccessToken() {
+
+  }
 
   ngOnInit() {
   }

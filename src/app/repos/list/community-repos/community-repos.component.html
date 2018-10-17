@@ -1,3 +1,12 @@
+<button nz-button nzType="primary" (click)="showModal()">
+  <span>Show Modal</span>
+</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Modal Title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading">
+  <ul>
+    <li *ngFor="let item of items"></li>
+  </ul>
+</nz-modal>
 <div class="communityRepos">
   <nz-list [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
     <ng-template #item let-item>

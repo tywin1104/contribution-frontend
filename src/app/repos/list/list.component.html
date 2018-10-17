@@ -11,7 +11,7 @@
     </h3>
   </div>
   <nz-divider></nz-divider>
-  <app-community-repos></app-community-repos>
+  <app-community-repos [profile]="profile"></app-community-repos>
 </div>
 
 <app-repo-list [favoriteRepos]="favoriteRepos" [profile]="profile" (favRepoAdded)="onFavRepoAdded($event)"></app-repo-list>

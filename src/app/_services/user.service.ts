@@ -58,4 +58,8 @@ export class UserService {
   deleteFavRepo(userName: string, repoName: string): Observable<any> {
     return this.http.delete(`api/users/${userName}/favrepos/${repoName}`)
   }
+
+  getGithubAuthToken(userName: string): Observable<any> {
+    return this.http.get(`api/githubUserToken/${userName}`)
+  }
 }
