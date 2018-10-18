@@ -20,13 +20,13 @@ export class UserService {
 
   /** POST: add a new user to the database */
   addUser(userName: string): Observable<any> {
-    return this.http.post('api/users', {
+    return this.http.post('http://localhost:2888/users', {
       userName: userName
     }, httpOptions)
   }
 
   getUser(userName: string): Observable<any> {
-    return this.http.get(`api/users/${userName}`)
+    return this.http.get(`http://localhost:2888/users/${userName}`)
   }
 
   findOrCreate(userName: string) {
@@ -44,11 +44,11 @@ export class UserService {
   }
 
   getFavRepos(userName: string): Observable<any> {
-    return this.http.get(`api/users/${userName}/favrepos`)
+    return this.http.get(`http://localhost:2888/users/${userName}/favrepos`)
   }
 
   addFavRepo(userName: string, newRepo: Repo): Observable<any> {
-    return this.http.post(`api/users/${userName}/favrepos`, {
+    return this.http.post(`http://localhost:2888/users/${userName}/favrepos`, {
       repo_id: newRepo.repo_id,
       name: newRepo.name,
       url: newRepo.url
@@ -56,7 +56,7 @@ export class UserService {
   }
 
   deleteFavRepo(userName: string, repoName: string): Observable<any> {
-    return this.http.delete(`api/users/${userName}/favrepos/${repoName}`)
+    return this.http.delete(`http://localhost:2888/users/${userName}/favrepos/${repoName}`)
   }
 
   getGithubAuthToken(userName: string): Observable<any> {

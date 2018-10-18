@@ -11,7 +11,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod'
 import { routing } from './repos-routing'
 
 import { ListComponent } from './list/list.component';
