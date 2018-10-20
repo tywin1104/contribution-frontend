@@ -7,5 +7,5 @@ interface AuthConfig {
 export const AUTH_CONFIG: AuthConfig = {
   clientID: 'Aw4GUADHFmT1gSUWbsHHKVQkk63JNGTi',
   domain: 'tywinzhang.auth0.com',
-  callbackURL: 'http://localhost:5000/callback'
+  callbackURL: 'http://contributions.tywinzhang.com/callback'
 };

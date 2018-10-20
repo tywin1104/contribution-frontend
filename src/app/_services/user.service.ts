@@ -13,20 +13,20 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-  url: string
+  base_url = "http://35.196.79.181"
 
   constructor(private http: HttpClient) {
   }
 
   /** POST: add a new user to the database */
   addUser(userName: string): Observable<any> {
-    return this.http.post('http://localhost:2888/users', {
+    return this.http.post(`${this.base_url}/users`, {
       userName: userName
     }, httpOptions)
   }
 
   getUser(userName: string): Observable<any> {
-    return this.http.get(`http://localhost:2888/users/${userName}`)
+    return this.http.get(`${this.base_url}/users/${userName}`)
   }
 
   findOrCreate(userName: string) {
@@ -44,11 +44,11 @@ export class UserService {
   }
 
   getFavRepos(userName: string): Observable<any> {
-    return this.http.get(`http://localhost:2888/users/${userName}/favrepos`)
+    return this.http.get(`${this.base_url}/users/${userName}/favrepos`)
   }
 
   addFavRepo(userName: string, newRepo: Repo): Observable<any> {
-    return this.http.post(`http://localhost:2888/users/${userName}/favrepos`, {
+    return this.http.post(`${this.base_url}/users/${userName}/favrepos`, {
       repo_id: newRepo.repo_id,
       name: newRepo.name,
       url: newRepo.url
@@ -56,10 +56,10 @@ export class UserService {
   }
 
   deleteFavRepo(userName: string, repoName: string): Observable<any> {
-    return this.http.delete(`http://localhost:2888/users/${userName}/favrepos/${repoName}`)
+    return this.http.delete(`${this.base_url}/users/${userName}/favrepos/${repoName}`)
   }
 
   getGithubAuthToken(userName: string): Observable<any> {
-    return this.http.get(`api/githubUserToken/${userName}`)
+    return this.http.get(`${this.base_url}/githubUserToken/${userName}`)
   }
 }
