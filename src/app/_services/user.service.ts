@@ -13,7 +13,7 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-  base_url = "http://35.196.79.181"
+  base_url = "http://35.237.253.28"
 
   constructor(private http: HttpClient) {
   }
